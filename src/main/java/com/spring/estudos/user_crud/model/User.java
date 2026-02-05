@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "user_table")
-public class user {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +15,20 @@ public class user {
     private int age;
     private LocalDate birth;
 
-    public user() {
+    @Override
+    public String   toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", birth=" + birth +
+                '}';
     }
 
-    public user(Long id, String name, int age, LocalDate birth) {
+    public User() {
+    }
+
+    public User(Long id, String name, int age, LocalDate birth) {
         this.id = id;
         this.name = name;
         this.age = age;
