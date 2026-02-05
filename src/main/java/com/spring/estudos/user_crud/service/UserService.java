@@ -20,4 +20,16 @@ public class UserService {
     public User save (User user) {return userRepository.save(user);}
 
     public void deleteById (Long id) {userRepository.deleteById(id);}
+
+    public User update(Long id, User user){
+
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not find"));
+
+        existingUser.setName(user.getName());
+        existingUser.setAge(user.getAge());
+        existingUser.setBirth(user.getBirth());
+
+        return  userRepository.save(existingUser);
+    }
 }
